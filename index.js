@@ -24,6 +24,10 @@ app.use(comicIdRoute);
 const characterCharacterRoute = require("./routes/charactersCharacters");
 app.use(characterCharacterRoute);
 
+app.get("/", (req, res) => {
+  res.status(200).json("Welcome");
+});
+
 app.all("*", (req, res) => {
   res.status(400).json("Route introuvable");
 });
