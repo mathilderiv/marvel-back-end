@@ -2,7 +2,7 @@ const express = require("express");
 const formidable = require("express-formidable");
 const cors = require("cors");
 
-const axios = require("axios").default;
+const axios = require("axios");
 
 const mongoose = require("mongoose");
 
@@ -28,8 +28,8 @@ app.use(comicIdRoute);
 const characterCharacterRoute = require("./routes/charactersCharacters");
 app.use(characterCharacterRoute);
 
-const home = require("./routes/signin");
-app.use(home);
+const signin = require("./routes/signin");
+app.use(signin);
 
 //Routes générales
 

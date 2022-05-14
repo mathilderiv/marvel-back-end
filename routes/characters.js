@@ -2,7 +2,7 @@ const express = require("express");
 const formidable = require("express-formidable");
 const router = express.Router();
 
-const axios = require("axios").default;
+const axios = require("axios");
 
 const apiKey = process.env.API_KEY;
 
