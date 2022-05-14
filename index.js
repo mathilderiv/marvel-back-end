@@ -4,11 +4,15 @@ const cors = require("cors");
 
 const axios = require("axios").default;
 
+const mongoose = require("mongoose");
+
 const app = express();
 app.use(formidable());
 app.use(cors());
 
 require("dotenv").config();
+
+mongoose.connect(process.env.MONGODB_CONNECT);
 
 ///import des différentes routes
 
@@ -23,6 +27,11 @@ app.use(comicIdRoute);
 
 const characterCharacterRoute = require("./routes/charactersCharacters");
 app.use(characterCharacterRoute);
+
+const home = require("./routes/signin");
+app.use(home);
+
+//Routes générales
 
 app.get("/", (req, res) => {
   res.status(200).json("Welcome");
