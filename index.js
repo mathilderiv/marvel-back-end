@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const formidable = require("express-formidable");
 const cors = require("cors");
@@ -9,8 +11,6 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(formidable());
 app.use(cors());
-
-require("dotenv").config();
 
 mongoose.connect(process.env.MONGODB_CONNECT);
 
@@ -28,14 +28,14 @@ app.use(comicIdRoute);
 const characterCharacterRoute = require("./routes/charactersCharacters");
 app.use(characterCharacterRoute);
 
-const signin = require("./routes/signin");
-app.use(signin);
+const signinRoute = require("./routes/signin");
+app.use(signinRoute);
 
 //Routes générales
 
-app.get("/", (req, res) => {
-  res.status(200).json("Welcome");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).json("Welcome");
+// });
 
 app.all("*", (req, res) => {
   res.status(400).json("Route introuvable");
