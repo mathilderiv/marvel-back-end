@@ -10,9 +10,12 @@ const mongoose = require("mongoose");
 
 const app = express();
 app.use(formidable());
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_CONNECT);
+mongoose.connect(process.env.MONGODB_CONNECT).then(() => {
+  console.log("connected");
+});
 
 ///import des différentes routes
 

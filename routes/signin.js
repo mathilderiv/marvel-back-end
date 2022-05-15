@@ -1,5 +1,5 @@
 const express = require("express");
-const formidable = require("express-formidable");
+
 const router = express.Router();
 
 const SHA256 = require("crypto-js/sha256");
@@ -12,7 +12,7 @@ const User = require("../models/User");
 
 router.post("/signin", async (req, res) => {
   // Ici je vais mettre toute la logique pour le login et le signup
-  const { username, email, password } = req.fields;
+  const { username, email, password } = req.body;
   try {
     if (username && email && password) {
       const emailExist = await User.findOne({ email: email });
