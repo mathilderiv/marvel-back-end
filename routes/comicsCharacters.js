@@ -6,12 +6,12 @@ const axios = require("axios").default;
 
 const apiKey = process.env.API_KEY;
 
-router.get("/comics/:characterId", async (req, res) => {
+router.get("/comics/:comicsId", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics/${req.params.characterId}?apiKey=${apiKey}`
+      `https://lereacteur-marvel-api.herokuapp.com/comic/${req.params.comicsId}?apiKey=${apiKey}`
     );
-    console.log(response.data);
+
     res.json(response.data);
   } catch (error) {
     res.status(400).json({ error: error.message });
